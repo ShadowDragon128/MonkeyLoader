@@ -13,7 +13,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(GamePath)'==''">
-    <GamePath>G:\SteamLibrary\steamapps\common\Resonite</GamePath>
+    <GamePath>$(MSBuildThisFileDirectory)Game</GamePath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(ResonitePath)'==''">
