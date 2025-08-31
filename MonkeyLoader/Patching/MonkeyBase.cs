@@ -298,7 +298,7 @@ namespace MonkeyLoader.Patching
         {
             // Application Exit clears patches anyways
             if (!applicationExiting)
-                Harmony.UnpatchAll(Harmony.Id);
+                Harmony.UnpatchSelf();
 
             return true;
         }
