@@ -31,7 +31,14 @@ namespace MonkeyLoader
                 Debug.WriteLine($"=> Found already loaded assembly: {loadedAssembly.FullName}");
                 return loadedAssembly;
             }
-            
+
+            // Needed because BepInEx loaded stuff before
+            var found = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(x => x.GetName().Name == Path.GetFileNameWithoutExtension(assemblyPath));
+            if (found != null)
+            {
+                return found;
+            }
+
             if (string.IsNullOrEmpty(assemblyPath))
             {
                 throw new ArgumentException("Assembly path cannot be null or empty.", nameof(assemblyPath));
